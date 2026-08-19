@@ -14,7 +14,7 @@ export type GalleryClip = {
   score: string;
 };
 
-export const galleries: { model: string; task: string; selection: string; clips: GalleryClip[] }[] = [
+const galleryData: { model: string; task: string; selection: string; clips: GalleryClip[] }[] = [
   {
     model: "HunyuanVideo-13B",
     task: "Text-to-video · 720p",
@@ -83,6 +83,9 @@ export const galleries: { model: string; task: string; selection: string; clips:
     ],
   },
 ];
+
+const galleryOrder = ["Cosmos-Predict2.5-14B", "Cosmos3-Nano-16B", "HunyuanVideo-13B", "Wan2.2-I2V-A14B"];
+export const galleries = galleryOrder.map((model) => galleryData.find((gallery) => gallery.model === model)!);
 
 const modelResults: Record<string, { density: string; speedup: string; psnr: string; ssim: string; pbench?: string; summary: string }> = {
   "HunyuanVideo-13B": {
