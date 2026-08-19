@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { render, routes } from "../dist-ssr/entry-server.js";
+import { galleries, render, routes } from "../dist-ssr/entry-server.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
@@ -58,8 +58,22 @@ function structuredData(route) {
     },
   ];
 
-  if (route.kind === "model") {
-    graph[3].mainEntity = { "@type": "SoftwareApplication", name: route.model, applicationCategory: "AI video generation model" };
+  const selectedGalleries = route.kind === "videos"
+    ? galleries
+    : route.kind === "model"
+      ? galleries.filter((gallery) => gallery.model === route.model)
+      : [];
+
+  if (selectedGalleries.length > 0) {
+    graph[3].video = selectedGalleries.flatMap((gallery) => gallery.clips.slice(0, 3).map((clip) => ({
+      "@type": "VideoObject",
+      name: `${gallery.model}: ${clip.prompt}`,
+      description: `${clip.prompt} ${clip.benchmark} sample; dense-reference fidelity: ${clip.score}.`,
+      thumbnailUrl: [`${origin}${clip.src.replace("/media/gallery/", "/media/thumbnails/").replace(/\.mp4$/, ".jpg")}`],
+      uploadDate: "2026-08-18",
+      contentUrl: `${origin}${clip.src}`,
+      isFamilyFriendly: true,
+    })));
   }
 
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replaceAll("<", "\\u003c");

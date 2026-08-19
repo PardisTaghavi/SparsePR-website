@@ -7,14 +7,14 @@ const assetBase = import.meta.env.BASE_URL.replace(/\/$/, "");
 const assetUrl = (path: string) => `${assetBase}${path}`;
 const pageUrl = (path: string) => `${assetBase}${path}`;
 
-type GalleryClip = {
+export type GalleryClip = {
   src: string;
   prompt: string;
   benchmark: "VBench" | "PBench";
   score: string;
 };
 
-const galleries: { model: string; task: string; selection: string; clips: GalleryClip[] }[] = [
+export const galleries: { model: string; task: string; selection: string; clips: GalleryClip[] }[] = [
   {
     model: "HunyuanVideo-13B",
     task: "Text-to-video · 720p",
@@ -190,7 +190,7 @@ function GalleryVideo({ clip }: { clip: GalleryClip }) {
 
   return (
     <article className="gallery-video" tabIndex={0} aria-label={`${clip.benchmark} video. Hover or focus to read the prompt.`}>
-      <video ref={video} muted loop playsInline preload="metadata">
+      <video ref={video} muted loop playsInline preload="metadata" poster={assetUrl(clip.src.replace("/media/gallery/", "/media/thumbnails/").replace(/\.mp4$/, ".jpg"))}>
         <source src={assetUrl(clip.src)} type="video/mp4" />
       </video>
       <div className="prompt-overlay">
