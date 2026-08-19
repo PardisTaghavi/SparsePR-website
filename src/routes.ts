@@ -24,28 +24,28 @@ export const routes: RouteDefinition[] = [
   {
     id: "home",
     path: "/",
-    title: "SparsePR | Training-Free Sparse Attention",
+    title: "SparsePR: Training-Free Sparse Attention for Video Generation",
     description: "SparsePR is training-free sparse attention for video generation and world models, evaluated across HunyuanVideo, Wan2.2, Cosmos-Predict2.5, and Cosmos3-Nano.",
     kind: "home",
   },
   {
     id: "method",
     path: "/method/",
-    title: "SparsePR Method | Response-Coupled Sparse Attention",
+    title: "Response-Coupled Partitioning for Sparse Video Attention | SparsePR",
     description: "Learn how SparsePR combines Response-Coupled Partitioning with Probe-Fitted Residual Reconstruction to build executable sparse attention routes.",
     kind: "method",
   },
   {
     id: "results",
     path: "/results/",
-    title: "SparsePR Results | Quality, Density, and Speedup",
+    title: "SparsePR Benchmarks: Density, PSNR, SSIM, and Speedup",
     description: "SparsePR quality and efficiency results across four video and world models, including PSNR, SSIM, executed-pair density, PFLOPs, and end-to-end speedup.",
     kind: "results",
   },
   {
     id: "videos",
     path: "/videos/",
-    title: "SparsePR Video Results Across Four Models",
+    title: "SparsePR Video Results on Wan2.2, HunyuanVideo, and Cosmos",
     description: "Browse SparsePR sparse-attention video outputs from HunyuanVideo, Wan2.2, Cosmos-Predict2.5, and Cosmos3-Nano with prompts and fidelity metrics.",
     kind: "videos",
   },
@@ -95,4 +95,3 @@ export function resolveRoute(pathname: string): RouteDefinition {
 export function canonicalUrl(route: RouteDefinition) {
   return `${siteOrigin}${route.path === "/" ? "/" : route.path}`;
 }
-
