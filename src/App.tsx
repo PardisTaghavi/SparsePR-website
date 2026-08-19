@@ -305,7 +305,7 @@ function HomePage() {
         <p className="affiliation">Texas A&amp;M University</p>
         <div className="hero-actions">
           <span className="button primary disabled" aria-disabled="true">Paper <small>soon</small></span>
-          <a className="button" href={repositoryUrl}>Code ↗</a>
+          <span className="button disabled" aria-disabled="true">Code <small>soon</small></span>
           <a className="button" href={pageUrl("/results/")}>Results →</a>
           <a className="button" href="#citation">BibTeX</a>
         </div>
