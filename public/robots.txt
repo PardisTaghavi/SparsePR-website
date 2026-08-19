@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pardistaghavi.github.io/SparsePR-website/sitemap.xml

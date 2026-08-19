@@ -1,0 +1,10 @@
+{
+  "name": "SparsePR",
+  "short_name": "SparsePR",
+  "description": "Training-free sparse attention for video generation and world models.",
+  "start_url": "/SparsePR-website/",
+  "display": "standalone",
+  "background_color": "#fbfcfe",
+  "theme_color": "#1d4ed8",
+  "icons": []
+}

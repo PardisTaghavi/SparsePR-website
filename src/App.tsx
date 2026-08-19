@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { repositoryUrl, routeById, type RouteDefinition } from "./routes";
 
 const assetBase = import.meta.env.BASE_URL.replace(/\/$/, "");
 const assetUrl = (path: string) => `${assetBase}${path}`;
+const pageUrl = (path: string) => `${assetBase}${path}`;
 
 type GalleryClip = {
   src: string;
@@ -81,6 +83,39 @@ const galleries: { model: string; task: string; selection: string; clips: Galler
     ],
   },
 ];
+
+const modelResults: Record<string, { density: string; speedup: string; psnr: string; ssim: string; pbench?: string; summary: string }> = {
+  "HunyuanVideo-13B": {
+    density: "21.92%",
+    speedup: "2.61×",
+    psnr: "31.844",
+    ssim: "0.932",
+    summary: "SparsePR accelerates 720p text-to-video generation while preserving dense-reference fidelity on HunyuanVideo-13B.",
+  },
+  "Wan2.2-I2V-A14B": {
+    density: "21.97%",
+    speedup: "1.80×",
+    psnr: "30.658",
+    ssim: "0.907",
+    summary: "SparsePR applies executable sparse attention to Wan2.2 image-to-video generation with matched dense-reference evaluation.",
+  },
+  "Cosmos-Predict2.5-14B": {
+    density: "22.14%",
+    speedup: "1.51×",
+    psnr: "26.328",
+    ssim: "0.942",
+    pbench: "77.75",
+    summary: "SparsePR preserves physical-world prediction quality while reducing executed attention pairs on Cosmos-Predict2.5-14B.",
+  },
+  "Cosmos3-Nano-16B": {
+    density: "25.96%",
+    speedup: "1.48×",
+    psnr: "24.417",
+    ssim: "0.801",
+    pbench: "77.30",
+    summary: "SparsePR provides training-free sparse attention for Cosmos3-Nano-16B image-to-world generation.",
+  },
+};
 
 type ResultRow = {
   cells: string[];
@@ -222,7 +257,30 @@ function ResultTable({ headers, rows, wide = false }: { headers: string[]; rows:
   );
 }
 
-export default function Home() {
+function SiteNav() {
+  return (
+    <nav className="topbar" aria-label="Primary navigation">
+      <a className="brand" href={pageUrl("/")}><span className="brand-mark">S</span> SparsePR</a>
+      <div className="navlinks">
+        <a href={pageUrl("/videos/")}>Videos</a>
+        <a href={pageUrl("/method/")}>Method</a>
+        <a href={pageUrl("/results/")}>Results</a>
+        <a href={`${pageUrl("/")}#citation`}>Citation</a>
+      </div>
+    </nav>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="content footer">
+      <div><strong>SparsePR</strong><span>Partition the support. Reconstruct the residual.</span></div>
+      <p><a href={pageUrl("/method/")}>Method</a> · <a href={pageUrl("/results/")}>Results</a> · <a href={pageUrl("/videos/")}>Videos</a> · <a href={repositoryUrl}>Code</a><br />Website structure adapted from <a href="https://nerfies.github.io/">Nerfies</a> under CC BY-SA 4.0. © 2026 Pardis Taghavi, Reza Langari, and Gaurav Pandey.</p>
+    </footer>
+  );
+}
+
+function HomePage() {
   const [groupSize, setGroupSize] = useState(8);
   const [copied, setCopied] = useState(false);
   const visibleSupports = querySupports.slice(0, groupSize);
@@ -236,12 +294,7 @@ export default function Home() {
 
   return (
     <main>
-      <nav className="topbar" aria-label="Primary navigation">
-        <a className="brand" href="#top"><span className="brand-mark">S</span> SparsePR</a>
-        <div className="navlinks">
-          <a href="#videos">Videos</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Citation</a>
-        </div>
-      </nav>
+      <SiteNav />
 
       <header id="top" className="hero content">
         <div className="eyebrow">Training-free sparse attention</div>
@@ -252,8 +305,8 @@ export default function Home() {
         <p className="affiliation">Texas A&amp;M University</p>
         <div className="hero-actions">
           <span className="button primary disabled" aria-disabled="true">Paper <small>soon</small></span>
-          <a className="button" href="https://github.com/PardisTaghavi/SparsePR">Code ↗</a>
-          <a className="button" href="#results">Results ↓</a>
+          <a className="button" href={repositoryUrl}>Code ↗</a>
+          <a className="button" href={pageUrl("/results/")}>Results →</a>
           <a className="button" href="#citation">BibTeX</a>
         </div>
         <div className="tldr"><strong>TL;DR</strong><span>SparsePR couples executable response-aware partitions with a small set of exact probe rows to recover the residual that sparse attention leaves behind.</span></div>
@@ -365,10 +418,121 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="content footer">
-        <div><strong>SparsePR</strong><span>Partition the support. Reconstruct the residual.</span></div>
-        <p>Website structure adapted from <a href="https://nerfies.github.io/">Nerfies</a> under CC BY-SA 4.0. © 2026 Pardis Taghavi, Reza Langari, and Gaurav Pandey.</p>
-      </footer>
+      <SiteFooter />
     </main>
   );
+}
+
+function PageHero({ eyebrow, title, lead }: { eyebrow: string; title: string; lead: string }) {
+  return (
+    <header className="content page-hero">
+      <p className="section-number">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p>{lead}</p>
+    </header>
+  );
+}
+
+function MethodPage() {
+  return (
+    <main>
+      <SiteNav />
+      <PageHero eyebrow="SparsePR method" title="Executable sparsity from response geometry." lead="SparsePR builds hardware-ready sparse routes and repairs their output error using information from the same attention call." />
+      <section className="method-section standalone-method">
+        <div className="content">
+          <h2>One response geometry.<br />Two coupled stages.</h2>
+          <div className="pipeline" aria-label="SparsePR method pipeline">
+            <div className="pipe-card"><span>01</span><strong>Sample responses</strong><p>Evaluate a compact set of query rows exactly against K/V.</p></div>
+            <div className="pipe-arrow">→</div>
+            <div className="pipe-card accent"><span>02</span><strong>Partition support</strong><p>Form paired K/V groups and response-aligned query groups.</p></div>
+            <div className="pipe-arrow">→</div>
+            <div className="pipe-card"><span>03</span><strong>Execute sparse routes</strong><p>Select and evaluate hardware-ready query-to-K/V cells.</p></div>
+            <div className="pipe-arrow">→</div>
+            <div className="pipe-card accent2"><span>04</span><strong>Reconstruct residual</strong><p>Fit a call-specific correction from the exact probe rows.</p></div>
+          </div>
+          <div className="method-columns">
+            <article><span className="method-tag">RCP</span><h3>Response-Coupled Partitioning</h3><p>Sampled query responses define value-aware paired K/V groups. Their centroids provide response coordinates for aligning queries that can efficiently share an executable route.</p></article>
+            <article><span className="method-tag">PFRR</span><h3>Probe-Fitted Residual Reconstruction</h3><p>A stratified set of exact query rows exposes the post-softmax residual. SparsePR fits an affine correction in a low-rank probe-residual subspace without updating model parameters.</p></article>
+          </div>
+        </div>
+      </section>
+      <section className="wide-section standalone-figure">
+        <div className="section-intro"><h2>Why per-query sparsity is not executable sparsity.</h2><p>Queries that share one route must use the union of their K/V supports. SparsePR groups queries by response similarity to increase support overlap before routing.</p></div>
+        <figure className="paper-figure structural-figure"><img src={assetUrl("/media/figures/structural-observations-final.png")} alt="Per-query attention support density compared with pooled support density and retained attention mass compared with output error" /><figcaption>Per-query concentration does not determine pooled executable support, and retained attention mass does not determine output error.</figcaption></figure>
+      </section>
+      <SiteFooter />
+    </main>
+  );
+}
+
+function ResultsPage() {
+  return (
+    <main>
+      <SiteNav />
+      <PageHero eyebrow="SparsePR results" title="Quality and efficiency across four models." lead="SparsePR is evaluated on text-to-video, image-to-video, and physical-world prediction models. Density includes routing and all exact probe pairs." />
+      <section className="wide-section results-section standalone-results">
+        <article className="results-block first-block">
+          <div className="results-subhead"><p>Table 1</p><div><h2>Quality and efficiency</h2><span>Reference fidelity, task quality, executed-pair density, attention PFLOPs, and end-to-end speedup.</span></div></div>
+          <ResultTable wide headers={["Model", "Method", "PSNR ↑", "SSIM ↑", "LPIPS ↓", "ImgQual ↑", "SubCons ↑", "PBench ↑", "Density ↓", "PFLOPs ↓", "E2E ↑"]} rows={qualityResults} />
+          <p className="table-note">† Reported by prior work. Rows without † are reproduced under matched hardware, sequence shape, and timing protocols.</p>
+        </article>
+        <figure className="paper-figure results-figure"><img src={assetUrl("/media/figures/results-final-pdf.png")} alt="Error reduction from response-coupled partitioning and full-generation latency breakdown" /><figcaption>At matched density, response-coupled partitioning reduces mean and p99 error. SparsePR reaches 1.80× end-to-end speedup on Wan2.2, with probe repair using 1.1% of total latency.</figcaption></figure>
+        <article className="results-block">
+          <div className="results-subhead"><p>Table 2</p><div><h2>Partitioning and reconstruction ablations</h2><span>Mean and p99 normalized attention-output error at 22% total executed-pair density. Lower is better.</span></div></div>
+          <ResultTable headers={["Configuration", "HunyuanVideo", "Wan2.2", "Cosmos-Predict2.5", "Cosmos3-Nano"]} rows={partitionResults} />
+        </article>
+      </section>
+      <SiteFooter />
+    </main>
+  );
+}
+
+function VideosPage() {
+  return (
+    <main>
+      <SiteNav />
+      <PageHero eyebrow="Qualitative results" title="SparsePR video gallery." lead="Browse sparse-attention outputs from four heterogeneous video and world models. Hover or focus a video to read its generation prompt." />
+      <section className="gallery-section standalone-gallery">
+        <div className="model-index" aria-label="Model result pages">
+          <a href={pageUrl("/models/hunyuanvideo/")}>HunyuanVideo</a>
+          <a href={pageUrl("/models/wan22/")}>Wan2.2</a>
+          <a href={pageUrl("/models/cosmos-predict25/")}>Cosmos-Predict2.5</a>
+          <a href={pageUrl("/models/cosmos3-nano/")}>Cosmos3-Nano</a>
+        </div>
+        <div className="model-galleries">{galleries.map((gallery) => <ModelGallery key={gallery.model} gallery={gallery} />)}</div>
+      </section>
+      <SiteFooter />
+    </main>
+  );
+}
+
+function ModelPage({ route }: { route: RouteDefinition }) {
+  const gallery = galleries.find((item) => item.model === route.model) ?? galleries[0];
+  const metrics = modelResults[gallery.model];
+  return (
+    <main>
+      <SiteNav />
+      <PageHero eyebrow="Model results" title={`SparsePR on ${gallery.model}.`} lead={metrics.summary} />
+      <section className="content model-metrics" aria-label={`${gallery.model} SparsePR metrics`}>
+        <div><strong>{metrics.density}</strong><span>executed-pair density</span></div>
+        <div><strong>{metrics.speedup}</strong><span>end-to-end speedup</span></div>
+        <div><strong>{metrics.psnr}</strong><span>PSNR</span></div>
+        <div><strong>{metrics.ssim}</strong><span>SSIM</span></div>
+        {metrics.pbench && <div><strong>{metrics.pbench}</strong><span>PBench</span></div>}
+      </section>
+      <section className="gallery-section model-page-gallery">
+        <ModelGallery gallery={gallery} />
+        <div className="page-actions"><a className="button primary" href={pageUrl("/results/")}>Full quantitative results</a><a className="button" href={pageUrl("/videos/")}>All video models</a></div>
+      </section>
+      <SiteFooter />
+    </main>
+  );
+}
+
+export default function App({ route = routeById.home }: { route?: RouteDefinition }) {
+  if (route.kind === "method") return <MethodPage />;
+  if (route.kind === "results") return <ResultsPage />;
+  if (route.kind === "videos") return <VideosPage />;
+  if (route.kind === "model") return <ModelPage route={route} />;
+  return <HomePage />;
 }
