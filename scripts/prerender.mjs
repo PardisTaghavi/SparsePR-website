@@ -33,8 +33,10 @@ function structuredData(route) {
         affiliation: { "@type": "CollegeOrUniversity", name: "Texas A&M University" },
       })),
       datePublished: "2026",
+      identifier: "arXiv:2608.18484",
       image,
-      url: `${origin}/`,
+      url: "https://arxiv.org/abs/2608.18484",
+      sameAs: "https://arxiv.org/abs/2608.18484",
     },
     {
       "@type": "SoftwareSourceCode",

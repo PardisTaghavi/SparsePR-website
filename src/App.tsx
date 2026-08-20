@@ -174,7 +174,9 @@ const bibtex = `@article{sparsepr2026,
   title   = {Partition the Support, Reconstruct the Residual:
              Training-Free Sparse Attention for Video Generation and World Models},
   author  = {Taghavi, Pardis and Langari, Reza and Pandey, Gaurav},
-  journal = {arXiv preprint},
+  journal = {arXiv preprint arXiv:2608.18484},
+  eprint  = {2608.18484},
+  archivePrefix = {arXiv},
   year    = {2026}
 }`;
 
@@ -307,8 +309,8 @@ function HomePage() {
         <p className="authors">Pardis Taghavi · Reza Langari · Gaurav Pandey</p>
         <p className="affiliation">Texas A&amp;M University</p>
         <div className="hero-actions">
-          <span className="button primary disabled" aria-disabled="true">Paper <small>soon</small></span>
-          <span className="button disabled" aria-disabled="true">Code <small>soon</small></span>
+          <a className="button primary" href="https://arxiv.org/abs/2608.18484" target="_blank" rel="noreferrer">Paper ↗</a>
+          <a className="button" href="https://github.com/PardisTaghavi/SparsePR" target="_blank" rel="noreferrer">Code ↗</a>
           <a className="button" href={pageUrl("/results/")}>Results →</a>
           <a className="button" href="#citation">BibTeX</a>
         </div>
