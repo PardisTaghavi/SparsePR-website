@@ -170,14 +170,11 @@ const querySupports = [
   [11, 29, 47],
 ];
 
-const bibtex = `@article{sparsepr2026,
-  title   = {Partition the Support, Reconstruct the Residual:
-             Training-Free Sparse Attention for Video Generation and World Models},
-  author  = {Taghavi, Pardis and Langari, Reza and Pandey, Gaurav},
-  journal = {arXiv preprint arXiv:2608.18484},
-  eprint  = {2608.18484},
-  archivePrefix = {arXiv},
-  year    = {2026}
+const bibtex = `@article{taghavi2026partition,
+  title={Partition the Support, Reconstruct the Residual: Training-Free Sparse Attention for Video Generation and World Models},
+  author={Taghavi, Pardis and Langari, Reza and Pandey, Gaurav},
+  journal={arXiv preprint arXiv:2608.18484},
+  year={2026}
 }`;
 
 function GalleryVideo({ clip }: { clip: GalleryClip }) {
