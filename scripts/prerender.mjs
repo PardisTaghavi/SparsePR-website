@@ -8,6 +8,10 @@ const dist = join(root, "dist");
 const template = await readFile(join(dist, "index.html"), "utf8");
 const origin = "https://pardistaghavi.github.io/SparsePR-website";
 const image = `${origin}/og.png`;
+const paperTitle = "Partition the Support, Reconstruct the Residual: Training-Free Sparse Attention for Video Generation and World Models";
+const paperAuthors = ["Pardis Taghavi", "Reza Langari", "Gaurav Pandey"];
+const paperUrl = "https://arxiv.org/abs/2608.18484";
+const paperPdfUrl = "https://arxiv.org/pdf/2608.18484";
 
 const escapeAttribute = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const canonical = (route) => `${origin}${route.path}`;
@@ -26,17 +30,19 @@ function structuredData(route) {
     {
       "@type": "ScholarlyArticle",
       "@id": `${origin}/#paper`,
-      headline: "Partition the Support, Reconstruct the Residual: Training-Free Sparse Attention for Video Generation and World Models",
-      author: ["Pardis Taghavi", "Reza Langari", "Gaurav Pandey"].map((name) => ({
+      headline: paperTitle,
+      author: paperAuthors.map((name) => ({
         "@type": "Person",
         name,
         affiliation: { "@type": "CollegeOrUniversity", name: "Texas A&M University" },
       })),
-      datePublished: "2026",
+      datePublished: "2026-08-19",
       identifier: "arXiv:2608.18484",
       image,
-      url: "https://arxiv.org/abs/2608.18484",
-      sameAs: "https://arxiv.org/abs/2608.18484",
+      url: paperUrl,
+      sameAs: paperUrl,
+      encoding: { "@type": "MediaObject", contentUrl: paperPdfUrl, encodingFormat: "application/pdf" },
+      isAccessibleForFree: true,
     },
     {
       "@type": "SoftwareSourceCode",
@@ -83,8 +89,18 @@ function structuredData(route) {
 
 function head(route) {
   const url = canonical(route);
+  const citationMetadata = route.path === "/" ? [
+    `<meta name="citation_title" content="${escapeAttribute(paperTitle)}" />`,
+    ...paperAuthors.map((author) => `<meta name="citation_author" content="${escapeAttribute(author)}" />`),
+    '<meta name="citation_publication_date" content="2026/08/19" />',
+    '<meta name="citation_arxiv_id" content="2608.18484" />',
+    `<meta name="citation_abstract_html_url" content="${paperUrl}" />`,
+    `<meta name="citation_pdf_url" content="${paperPdfUrl}" />`,
+    `<link rel="alternate" type="application/pdf" href="${paperPdfUrl}" />`,
+  ] : [];
   return [
     '<meta name="robots" content="index,follow,max-image-preview:large,max-video-preview:-1,max-snippet:-1" />',
+    ...citationMetadata,
     `<link rel="canonical" href="${url}" />`,
     `<meta property="og:title" content="${escapeAttribute(route.title)}" />`,
     `<meta property="og:description" content="${escapeAttribute(route.description)}" />`,
