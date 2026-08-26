@@ -12,7 +12,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 img, video { max-width: 100%; }
@@ -25,24 +25,23 @@ img, video { max-width: 100%; }
 .navlinks { display: flex; gap: 28px; color: #50596a; font-size: 14px; }
 .navlinks a:hover { color: var(--blue); }
 
-.hero.content { width: min(2400px, calc(100% - clamp(40px, 3vw, 96px))); }
-.hero { position: relative; isolation: isolate; min-height: calc(100svh - 78px); padding: clamp(78px, 9vh, 132px) 0; display: flex; flex-direction: column; justify-content: center; text-align: center; }
-.hero::before { content: ""; position: absolute; z-index: 0; top: 1%; right: -2%; width: 76%; height: 72%; background: url("./og.png") right center / 155% auto no-repeat; opacity: .17; filter: saturate(1.1); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 25%, #000 82%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 25%, #000 82%, transparent 100%); pointer-events: none; }
+.hero { position: relative; isolation: isolate; text-align: center; padding: 92px 0 104px; }
+.hero::before { content: ""; position: absolute; z-index: 0; top: 18px; right: -150px; width: 78%; height: 440px; background: url("./og.png") right center / 180% auto no-repeat; opacity: .17; filter: saturate(1.1); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 78%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 78%, transparent 100%); pointer-events: none; }
 .hero > * { position: relative; z-index: 1; }
 .eyebrow, .section-number { color: var(--blue); font-size: 12px; font-weight: 750; letter-spacing: 0.14em; text-transform: uppercase; }
-.hero h1 { margin: 14px 0 0; font-size: clamp(96px, 14vw, 420px); line-height: 0.88; letter-spacing: -0.085em; font-weight: 820; }
+.hero h1 { margin: 14px 0 0; font-size: clamp(82px, 14vw, 154px); line-height: 0.88; letter-spacing: -0.085em; font-weight: 820; }
 .hero h1 span { color: transparent; background: linear-gradient(110deg, var(--blue-dark) 0%, #2563eb 45%, #3b82f6 100%); background-clip: text; -webkit-background-clip: text; }
-.hero-kicker { margin: clamp(28px, 3vh, 42px) 0 24px; color: var(--blue); font-family: Georgia, "Times New Roman", serif; font-size: clamp(25px, 2.25vw, 52px); font-style: italic; }
-.hero h2 { max-width: 1180px; margin: 0 auto 30px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 2.7vw, 58px); font-weight: 400; line-height: 1.14; letter-spacing: -0.025em; }
-.authors { margin: 0 0 7px; font-size: clamp(15px, 1.05vw, 21px); font-weight: 700; }
-.affiliation { margin: 0; color: var(--muted); font-size: clamp(14px, .9vw, 18px); }
+.hero-kicker { margin: 26px 0 22px; color: var(--blue); font-family: Georgia, "Times New Roman", serif; font-size: clamp(23px, 3vw, 34px); font-style: italic; }
+.hero h2 { max-width: 880px; margin: 0 auto 26px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(25px, 3.3vw, 39px); font-weight: 400; line-height: 1.18; letter-spacing: -0.025em; }
+.authors { margin: 0 0 5px; font-weight: 700; }
+.affiliation { margin: 0; color: var(--muted); font-size: 14px; }
 .hero-actions { margin: 34px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .button { min-height: 44px; padding: 0 18px; border: 1px solid #cbd3df; border-radius: 999px; display: inline-flex; align-items: center; gap: 8px; background: white; font-size: 14px; font-weight: 650; transition: 160ms ease; }
 .button:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
 .button.primary { border-color: var(--blue); background: var(--blue); color: white; }
 .button.disabled { color: #8a92a0; cursor: default; }
 .button.disabled small { padding: 2px 6px; border-radius: 99px; background: #eef1f5; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
-.tldr { width: min(1180px, 82%); max-width: none; margin: clamp(42px, 5vh, 62px) auto 0; padding: 20px 26px; display: flex; align-items: baseline; gap: 15px; border: 1px solid #ccd6ec; border-radius: 12px; background: var(--blue-soft); text-align: left; line-height: 1.6; }
+.tldr { max-width: 880px; margin: 42px auto 0; padding: 19px 24px; display: flex; align-items: baseline; gap: 15px; border: 1px solid #ccd6ec; border-radius: 12px; background: var(--blue-soft); text-align: left; line-height: 1.6; }
 .tldr strong { color: var(--blue); font-size: 12px; letter-spacing: .1em; white-space: nowrap; }
 .tldr span { font-family: Georgia, "Times New Roman", serif; font-size: 17px; }
 
@@ -202,12 +201,6 @@ tbody tr:hover { background: #f8faff; }
 .footer a { color: var(--blue); text-decoration: underline; }
 
 @media (max-width: 900px) {
-  .hero.content { width: min(100% - 36px, 1080px); }
-  .hero { min-height: auto; padding: 82px 0 92px; }
-  .hero h1 { font-size: clamp(82px, 16vw, 132px); }
-  .hero h2 { max-width: 880px; font-size: clamp(27px, 4.2vw, 38px); }
-  .hero-kicker { font-size: clamp(24px, 4vw, 34px); }
-  .tldr { width: min(880px, 100%); }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery-video:nth-child(3) { display: none; }
   .metrics-band { grid-template-columns: 1fr 1fr; }
@@ -230,7 +223,7 @@ tbody tr:hover { background: #f8faff; }
   .page-hero { padding: 64px 0 58px; }
   .page-hero h1 { font-size: 48px; }
   .page-hero > p:last-child { font-size: 16px; }
-  .hero::before { top: 20px; right: -26%; width: 125%; height: 300px; background-size: 185% auto; opacity: .12; }
+  .hero::before { top: 20px; right: -100px; width: 115%; height: 300px; background-size: 190% auto; opacity: .12; }
   .hero h1 { font-size: 74px; }
   .desktop-break { display: none; }
   .tldr { align-items: flex-start; flex-direction: column; }
