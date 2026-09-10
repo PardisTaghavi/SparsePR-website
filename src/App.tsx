@@ -316,7 +316,7 @@ function HomePage() {
 
       <section className="gallery-section" id="videos" aria-labelledby="teaser-heading">
         <div className="section-intro compact">
-          <p className="section-number">01 / See the result</p>
+          <p className="section-number">See the result</p>
           <h2 id="teaser-heading">SparsePR across four video models.</h2>
         </div>
         <div className="model-galleries">{galleries.map((gallery) => <ModelGallery key={gallery.model} gallery={gallery} />)}</div>
@@ -330,7 +330,7 @@ function HomePage() {
       </section>
 
       <section className="content prose-section" id="abstract">
-        <p className="section-number">02 / Abstract</p>
+        <p className="section-number">Abstract</p>
         <h2>Executable sparsity needs more than concentrated attention.</h2>
         <div className="abstract-grid">
           <p>Training-free block-sparse attention can accelerate video transformers, but attention concentration alone does not define an executable sparse operator. Shared query routes can expand support, and retained attention mass does not predict the output error from skipped interactions.</p>
@@ -340,7 +340,7 @@ function HomePage() {
 
       <section className="wide-section insight-section" id="method">
         <div className="section-intro">
-          <p className="section-number">03 / Why partition geometry matters</p>
+          <p className="section-number">Why partition geometry matters</p>
           <h2>Why per-query sparsity is not executable sparsity.</h2>
           <p><strong>Support density</strong> is the percentage of key tokens needed to retain 90% of attention mass. The pooled diagnostic measures their union across queries before block routing.</p>
         </div>
@@ -373,7 +373,7 @@ function HomePage() {
 
       <section className="method-section">
         <div className="content">
-          <p className="section-number light">04 / Method</p>
+          <p className="section-number light">Method</p>
           <h2>One response geometry.<br />Two coupled stages.</h2>
           <p className="method-lead">SparsePR constructs the executable partition and reconstructs its error using features from the same current attention call.</p>
           <div className="pipeline" aria-label="SparsePR method pipeline">
@@ -394,7 +394,7 @@ function HomePage() {
 
       <section className="wide-section results-section" id="results">
         <div className="section-intro">
-          <p className="section-number">05 / Results</p>
+          <p className="section-number">Results</p>
           <h2>Quality and efficiency across four video models.</h2>
           <p>All quantitative results from the final draft. Values use matched hardware and sequence shapes where reproduced. Density includes routing and exact probe pairs.</p>
         </div>
@@ -415,7 +415,7 @@ function HomePage() {
 
       <section className="citation-section" id="citation">
         <div className="content citation-grid">
-          <div><p className="section-number light">06 / Citation</p><h2>Build on SparsePR.</h2></div>
+          <div><p className="section-number light">Citation</p><h2>Build on SparsePR.</h2></div>
           <div className="bibtex"><button onClick={copyCitation}>{copied ? "Copied" : "Copy BibTeX"}</button><pre>{bibtex}</pre></div>
         </div>
       </section>

@@ -25,8 +25,7 @@ img, video { max-width: 100%; }
 .navlinks { display: flex; gap: 28px; color: #50596a; font-size: 14px; }
 .navlinks a:hover { color: var(--blue); }
 
-.hero { position: relative; isolation: isolate; text-align: center; padding: 92px 0 104px; }
-.hero::before { content: ""; position: absolute; z-index: 0; top: 18px; right: -150px; width: 78%; height: 440px; background: url("./og.png") right center / 180% auto no-repeat; opacity: .17; filter: saturate(1.1); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 78%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 78%, transparent 100%); pointer-events: none; }
+.hero { position: relative; isolation: isolate; text-align: center; padding: 92px 0 104px; background: #fff; }
 .hero > * { position: relative; z-index: 1; }
 .eyebrow, .section-number { color: var(--blue); font-size: 12px; font-weight: 750; letter-spacing: 0.14em; text-transform: uppercase; }
 .hero h1 { margin: 14px 0 0; font-size: clamp(82px, 14vw, 154px); line-height: 0.88; letter-spacing: -0.085em; font-weight: 820; }
@@ -223,7 +222,6 @@ tbody tr:hover { background: #f8faff; }
   .page-hero { padding: 64px 0 58px; }
   .page-hero h1 { font-size: 48px; }
   .page-hero > p:last-child { font-size: 16px; }
-  .hero::before { top: 20px; right: -100px; width: 115%; height: 300px; background-size: 190% auto; opacity: .12; }
   .hero h1 { font-size: 74px; }
   .desktop-break { display: none; }
   .tldr { align-items: flex-start; flex-direction: column; }
