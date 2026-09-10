@@ -262,7 +262,7 @@ function ResultTable({ headers, rows, wide = false }: { headers: string[]; rows:
 function SiteNav() {
   return (
     <nav className="topbar" aria-label="Primary navigation">
-      <a className="brand" href={pageUrl("/")}><span className="brand-mark">S</span> SparsePR</a>
+      <a className="brand" href={pageUrl("/")}>SparsePR</a>
       <div className="navlinks">
         <a href={pageUrl("/videos/")}>Videos</a>
         <a href={pageUrl("/method/")}>Method</a>
@@ -401,13 +401,12 @@ function HomePage() {
         <article className="results-block">
           <div className="results-subhead"><p>Table 1</p><div><h3>Quality and efficiency</h3><span>Reference fidelity, task quality, executed-pair density, attention PFLOPs, and end-to-end speedup.</span></div></div>
           <ResultTable wide headers={["Model", "Method", "PSNR ↑", "SSIM ↑", "LPIPS ↓", "ImgQual ↑", "SubCons ↑", "PBench ↑", "Density ↓", "PFLOPs ↓", "E2E ↑"]} rows={qualityResults} />
-          <p className="table-note">† Reported by prior work. Rows without † are reproduced under matched hardware, sequence shape, and timing protocols.</p>
         </article>
 
         <figure className="paper-figure results-figure"><img src={assetUrl("/media/figures/results-final-pdf.png")} alt="Error reduction from response-coupled partitioning across four models and Wan2.2 full-generation latency breakdown" /><figcaption>Response-coupled partitioning reduces mean and p99 error at 22% density. On Wan2.2, SparsePR reaches 1.80× speedup and probe repair uses 1.1% of total latency.</figcaption></figure>
 
         <article className="results-block">
-          <div className="results-subhead"><p>Table 2</p><div><h3>Partitioning and reconstruction ablations</h3><span>Mean / p99 normalized attention-output error at 22% total executed-pair density. Lower is better.</span></div></div>
+          <div className="results-subhead"><p>Table 2</p><div><h3>Partitioning and reconstruction ablations</h3><span>Mean / p99 normalized attention output error at 22% total executed-pair density. Lower is better.</span></div></div>
           <ResultTable headers={["Configuration", "HunyuanVideo", "Wan2.2", "Cosmos-Predict2.5", "Cosmos3-Nano"]} rows={partitionResults} />
         </article>
 
@@ -476,11 +475,10 @@ function ResultsPage() {
         <article className="results-block first-block">
           <div className="results-subhead"><p>Table 1</p><div><h2>Quality and efficiency</h2><span>Reference fidelity, task quality, executed-pair density, attention PFLOPs, and end-to-end speedup.</span></div></div>
           <ResultTable wide headers={["Model", "Method", "PSNR ↑", "SSIM ↑", "LPIPS ↓", "ImgQual ↑", "SubCons ↑", "PBench ↑", "Density ↓", "PFLOPs ↓", "E2E ↑"]} rows={qualityResults} />
-          <p className="table-note">† Reported by prior work. Rows without † are reproduced under matched hardware, sequence shape, and timing protocols.</p>
         </article>
         <figure className="paper-figure results-figure"><img src={assetUrl("/media/figures/results-final-pdf.png")} alt="Error reduction from response-coupled partitioning and full-generation latency breakdown" /><figcaption>At matched density, response-coupled partitioning reduces mean and p99 error. SparsePR reaches 1.80× end-to-end speedup on Wan2.2, with probe repair using 1.1% of total latency.</figcaption></figure>
         <article className="results-block">
-          <div className="results-subhead"><p>Table 2</p><div><h2>Partitioning and reconstruction ablations</h2><span>Mean and p99 normalized attention-output error at 22% total executed-pair density. Lower is better.</span></div></div>
+          <div className="results-subhead"><p>Table 2</p><div><h2>Partitioning and reconstruction ablations</h2><span>Mean and p99 normalized attention output error at 22% total executed-pair density. Lower is better.</span></div></div>
           <ResultTable headers={["Configuration", "HunyuanVideo", "Wan2.2", "Cosmos-Predict2.5", "Cosmos3-Nano"]} rows={partitionResults} />
         </article>
       </section>

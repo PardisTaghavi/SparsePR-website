@@ -2,7 +2,7 @@
   --ink: #111827;
   --muted: #667085;
   --line: #dbe0e8;
-  --paper: #fbfcfe;
+  --paper: #fff;
   --blue: #1d4ed8;
   --blue-dark: #123695;
   --blue-soft: #e9efff;
@@ -17,11 +17,10 @@ a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 img, video { max-width: 100%; }
 .content { width: min(1080px, calc(100% - 40px)); margin-inline: auto; }
-.wide-section { width: min(1280px, calc(100% - 40px)); margin-inline: auto; }
+.wide-section { width: min(1120px, calc(100% - 80px)); margin-inline: auto; }
 
-.topbar { width: min(1280px, calc(100% - 40px)); height: 78px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
-.brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 750; letter-spacing: -0.01em; }
-.brand-mark { width: 28px; height: 28px; display: grid; place-items: center; color: white; background: var(--blue); border-radius: 7px; }
+.topbar { width: min(1120px, calc(100% - 80px)); height: 78px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; font-size: 15px; font-weight: 750; letter-spacing: -0.01em; }
 .navlinks { display: flex; gap: 28px; color: #50596a; font-size: 14px; }
 .navlinks a:hover { color: var(--blue); }
 
@@ -64,7 +63,7 @@ img, video { max-width: 100%; }
 .model-page-gallery { padding-top: 0; padding-bottom: 100px; border-top: 0; }
 .page-actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 10px; }
 
-.gallery-section { padding: 82px max(20px, calc((100vw - 1540px) / 2)) 0; border-top: 1px solid var(--line); }
+.gallery-section { width: min(1120px, calc(100% - 80px)); margin-inline: auto; padding: 82px 0 0; }
 .section-intro { max-width: 830px; margin-bottom: 36px; }
 .section-intro.compact { max-width: 720px; }
 .section-intro h2, .prose-section h2 { margin: 10px 0 14px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; font-weight: 400; letter-spacing: -0.035em; }
@@ -96,7 +95,7 @@ img, video { max-width: 100%; }
 .gallery-position { margin-top: 10px; color: #7b8493; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; text-align: right; }
 @keyframes gallery-in { from { opacity: .62; transform: translateX(7px); } to { opacity: 1; transform: translateX(0); } }
 
-.metrics-band { width: min(1180px, calc(100% - 40px)); margin: 80px auto; padding: 40px 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.metrics-band { width: min(1120px, calc(100% - 80px)); margin: 80px auto; padding: 40px 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .metrics-band div { padding: 0 28px; display: flex; flex-direction: column; border-right: 1px solid var(--line); }
 .metrics-band div:last-child { border: 0; }
 .metrics-band strong { color: var(--blue); font-family: Georgia, "Times New Roman", serif; font-size: clamp(30px, 4vw, 46px); font-weight: 400; letter-spacing: -.04em; }
@@ -182,7 +181,6 @@ tbody tr:hover { background: #f8faff; }
 .results-data-table tr.group-start:not(:first-child) td { border-top: 2px solid #cbd3df; }
 .results-data-table tr.highlight { background: #eef3ff; }
 .results-data-table tr.highlight td { color: #132b61; font-weight: 650; }
-.table-note { margin: 12px 2px 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
 .results-figure { margin-top: 58px; }
 .results-figure img { width: 100%; height: auto; padding: clamp(18px, 2.2vw, 30px); }
 
@@ -214,8 +212,7 @@ tbody tr:hover { background: #f8faff; }
 }
 
 @media (max-width: 640px) {
-  .content, .wide-section, .topbar, .metrics-band { width: min(100% - 28px, 1080px); }
-  .gallery-section { padding-inline: 14px; }
+  .content, .wide-section, .topbar, .metrics-band, .gallery-section { width: min(100% - 48px, 1080px); }
   .topbar { height: 64px; }
   .navlinks { display: none; }
   .hero { padding: 70px 0 78px; }
