@@ -27,9 +27,10 @@ img, video { max-width: 100%; }
 .hero { position: relative; isolation: isolate; text-align: center; padding: 92px 0 104px; background: #fff; }
 .hero > * { position: relative; z-index: 1; }
 .eyebrow, .section-number { color: var(--blue); font-size: 12px; font-weight: 750; letter-spacing: 0.14em; text-transform: uppercase; }
+.hero .eyebrow { color: #000; }
 .hero h1 { margin: 14px 0 0; font-size: clamp(82px, 14vw, 154px); line-height: 0.88; letter-spacing: -0.085em; font-weight: 820; }
-.hero h1 span { color: transparent; background: linear-gradient(110deg, var(--blue-dark) 0%, #2563eb 45%, #3b82f6 100%); background-clip: text; -webkit-background-clip: text; }
-.hero-kicker { margin: 26px 0 22px; color: var(--blue); font-family: Georgia, "Times New Roman", serif; font-size: clamp(23px, 3vw, 34px); font-style: italic; }
+.hero h1 span { color: #000; }
+.hero-kicker { margin: 26px 0 22px; color: #000; font-family: Georgia, "Times New Roman", serif; font-size: clamp(23px, 3vw, 34px); font-style: italic; }
 .hero h2 { max-width: 880px; margin: 0 auto 26px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(25px, 3.3vw, 39px); font-weight: 400; line-height: 1.18; letter-spacing: -0.025em; }
 .authors { margin: 0 0 5px; font-weight: 700; }
 .affiliation { margin: 0; color: var(--muted); font-size: 14px; }
