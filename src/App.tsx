@@ -91,21 +91,21 @@ const modelResults: Record<string, { density: string; speedup: string; psnr: str
   "HunyuanVideo-13B": {
     density: "21.92%",
     speedup: "2.61×",
-    psnr: "31.844",
+    psnr: "31.84",
     ssim: "0.932",
     summary: "SparsePR accelerates 720p text-to-video generation while preserving dense-reference fidelity on HunyuanVideo-13B.",
   },
   "Wan2.2-I2V-A14B": {
     density: "21.97%",
     speedup: "1.80×",
-    psnr: "30.658",
+    psnr: "30.66",
     ssim: "0.907",
     summary: "SparsePR applies executable sparse attention to Wan2.2 image-to-video generation with matched dense-reference evaluation.",
   },
   "Cosmos-Predict2.5-14B": {
     density: "22.14%",
     speedup: "1.51×",
-    psnr: "26.328",
+    psnr: "26.33",
     ssim: "0.942",
     pbench: "77.75",
     summary: "SparsePR preserves physical-world prediction quality while reducing executed attention pairs on Cosmos-Predict2.5-14B.",
@@ -113,7 +113,7 @@ const modelResults: Record<string, { density: string; speedup: string; psnr: str
   "Cosmos3-Nano-16B": {
     density: "25.96%",
     speedup: "1.48×",
-    psnr: "24.417",
+    psnr: "24.42",
     ssim: "0.801",
     pbench: "77.30",
     summary: "SparsePR provides training-free sparse attention for Cosmos3-Nano-16B image-to-world generation.",
@@ -127,36 +127,36 @@ type ResultRow = {
 };
 
 const qualityResults: ResultRow[] = [
-  { cells: ["HunyuanVideo-13B", "Dense", "–", "–", "–", "0.850", "0.976", "–", "100%", "612.38", "1.00×"], groupStart: true },
-  { cells: ["HunyuanVideo-13B", "SpargeAttn†", "24.589", "0.796", "0.232", "–", "0.908", "–", "40.09%", "389.76", "1.38×"] },
-  { cells: ["HunyuanVideo-13B", "SVG2†", "30.452", "0.910", "0.117", "0.852", "0.927", "–", "25.45%", "299.02", "2.30×"] },
-  { cells: ["HunyuanVideo-13B", "SVOO†", "24.879", "0.843", "0.224", "0.6793", "0.9799", "–", "–", "–", "2.17×"] },
-  { cells: ["HunyuanVideo-13B", "SVG-EAR†", "31.043", "0.928", "0.092", "0.845", "0.903", "–", "22.17%", "281.86", "1.93×"] },
-  { cells: ["HunyuanVideo-13B", "SparsePR", "31.844", "0.932", "0.087", "0.850", "0.976", "–", "21.92%", "255.95", "2.61×"], highlight: true },
-  { cells: ["Wan2.2-I2V-A14B", "Dense", "–", "–", "–", "0.689", "0.974", "–", "100%", "658.46", "1.00×"], groupStart: true },
-  { cells: ["Wan2.2-I2V-A14B", "SpargeAttn†", "27.140", "0.883", "0.116", "0.680", "0.958", "–", "30.15%", "396.83", "1.58×"] },
-  { cells: ["Wan2.2-I2V-A14B", "SVG2†", "26.562", "0.861", "0.138", "0.668", "0.959", "–", "31.28%", "393.95", "1.59×"] },
-  { cells: ["Wan2.2-I2V-A14B", "SVOO†", "29.678", "0.913", "0.095", "0.7337", "0.9731", "–", "–", "–", "1.61×"] },
-  { cells: ["Wan2.2-I2V-A14B", "SVG-EAR†", "29.759", "0.918", "0.093", "0.680", "0.959", "–", "23.64%", "378.88", "1.61×"] },
-  { cells: ["Wan2.2-I2V-A14B", "SparsePR", "30.658", "0.907", "0.044", "0.687", "0.973", "–", "21.97%", "328.70", "1.80×"], highlight: true },
-  { cells: ["Cosmos-Predict2.5-14B", "Dense", "–", "–", "–", "0.714", "0.976", "77.76", "100%", "526.87", "1.00×"], groupStart: true },
-  { cells: ["Cosmos-Predict2.5-14B", "SVG2", "20.075", "0.624", "0.330", "0.678", "0.896", "76.14", "28.81%", "286.51", "1.24×"] },
-  { cells: ["Cosmos-Predict2.5-14B", "SVOO", "22.066", "0.685", "0.289", "0.701", "0.909", "76.03", "37.63%", "315.38", "1.03×"] },
-  { cells: ["Cosmos-Predict2.5-14B", "SVG-EAR", "25.549", "0.908", "0.062", "0.710", "0.976", "77.78", "29.75%", "289.69", "1.10×"] },
-  { cells: ["Cosmos-Predict2.5-14B", "SparsePR", "26.328", "0.942", "0.068", "0.714", "0.976", "77.75", "22.14%", "253.61", "1.51×"], highlight: true },
-  { cells: ["Cosmos3-Nano-16B", "Dense", "–", "–", "–", "0.700", "0.950", "77.31", "100.00%", "90.01", "1.00×"], groupStart: true },
-  { cells: ["Cosmos3-Nano-16B", "SVG2", "22.458", "0.735", "0.216", "0.677", "0.915", "75.03", "37.29%", "57.69", "1.16×"] },
-  { cells: ["Cosmos3-Nano-16B", "SVOO", "16.642", "0.573", "0.381", "0.707", "0.962", "77.59", "67.32%", "69.51", "1.02×"] },
-  { cells: ["Cosmos3-Nano-16B", "SVG-EAR", "21.167", "0.709", "0.261", "0.658", "0.872", "72.85", "37.18%", "57.64", "1.10×"] },
-  { cells: ["Cosmos3-Nano-16B", "SparsePR", "24.417", "0.801", "0.176", "0.699", "0.949", "77.30", "25.96%", "43.22", "1.48×"], highlight: true },
+  { cells: ["HunyuanVideo-13B", "Dense", "–", "–", "–", "0.850", "0.976", "–", "100.0%", "612.38", "1.00×"], groupStart: true },
+  { cells: ["HunyuanVideo-13B", "SpargeAttn†", "25.31", "0.832", "0.217", "0.763", "0.928", "–", "40.19%", "389.76", "1.38×"] },
+  { cells: ["HunyuanVideo-13B", "SVG2†", "29.87", "0.907", "0.121", "0.850", "0.927", "–", "25.45%", "299.02", "2.30×"] },
+  { cells: ["HunyuanVideo-13B", "SVOO†", "24.87", "0.843", "0.224", "0.679", "0.976", "–", "33.26%", "345.81", "2.17×"] },
+  { cells: ["HunyuanVideo-13B", "SVG-EAR†", "30.54", "0.918", "0.098", "0.845", "0.903", "–", "22.17%", "281.86", "1.93×"] },
+  { cells: ["HunyuanVideo-13B", "SparsePR", "31.84", "0.932", "0.087", "0.850", "0.976", "–", "21.92%", "255.95", "2.61×"], highlight: true },
+  { cells: ["Wan2.2-I2V-A14B", "Dense", "–", "–", "–", "0.689", "0.974", "–", "100.0%", "658.46", "1.00×"], groupStart: true },
+  { cells: ["Wan2.2-I2V-A14B", "SpargeAttn†", "26.74", "0.871", "0.116", "0.680", "0.953", "–", "30.15%", "396.83", "1.58×"] },
+  { cells: ["Wan2.2-I2V-A14B", "SVG2†", "28.18", "0.878", "0.105", "0.668", "0.970", "–", "31.28%", "393.95", "1.59×"] },
+  { cells: ["Wan2.2-I2V-A14B", "SVOO†", "29.67", "0.913", "0.095", "0.689", "0.973", "–", "31.67%", "389.62", "1.61×"] },
+  { cells: ["Wan2.2-I2V-A14B", "SVG-EAR†", "29.75", "0.921", "0.086", "0.680", "0.970", "–", "23.64%", "378.88", "1.61×"] },
+  { cells: ["Wan2.2-I2V-A14B", "SparsePR", "30.66", "0.907", "0.044", "0.687", "0.973", "–", "21.97%", "336.55", "1.80×"], highlight: true },
+  { cells: ["Cosmos-Predict2.5-14B", "Dense", "–", "–", "–", "0.714", "0.976", "77.76", "100.0%", "526.87", "1.00×"], groupStart: true },
+  { cells: ["Cosmos-Predict2.5-14B", "SVG2", "20.07", "0.624", "0.330", "0.678", "0.896", "76.14", "28.81%", "286.51", "1.24×"] },
+  { cells: ["Cosmos-Predict2.5-14B", "SVOO", "22.06", "0.685", "0.289", "0.701", "0.909", "76.03", "37.63%", "315.38", "1.03×"] },
+  { cells: ["Cosmos-Predict2.5-14B", "SVG-EAR", "25.54", "0.908", "0.062", "0.710", "0.976", "77.76", "29.75%", "289.69", "1.10×"] },
+  { cells: ["Cosmos-Predict2.5-14B", "SparsePR", "26.33", "0.942", "0.068", "0.714", "0.976", "77.75", "22.14%", "253.61", "1.51×"], highlight: true },
+  { cells: ["Cosmos3-Nano-16B", "Dense", "–", "–", "–", "0.700", "0.950", "77.31", "100.0%", "127.61", "1.00×"], groupStart: true },
+  { cells: ["Cosmos3-Nano-16B", "SVG2", "22.45", "0.735", "0.216", "0.677", "0.915", "75.03", "37.29%", "96.19", "1.16×"] },
+  { cells: ["Cosmos3-Nano-16B", "SVOO", "16.64", "0.573", "0.381", "0.707", "0.962", "77.59", "67.32%", "108.01", "1.02×"] },
+  { cells: ["Cosmos3-Nano-16B", "SVG-EAR", "21.16", "0.709", "0.261", "0.658", "0.872", "72.85", "37.18%", "96.14", "1.10×"] },
+  { cells: ["Cosmos3-Nano-16B", "SparsePR", "24.42", "0.801", "0.176", "0.699", "0.949", "77.30", "25.96%", "81.79", "1.48×"], highlight: true },
 ];
 
 const partitionResults: ResultRow[] = [
-  { cells: ["Semantic partition", "0.0887 / 0.7136", "0.1634 / 1.7338", "0.7903 / 7.5318", "0.3590 / 3.3557"] },
-  { cells: ["Key-response K/V partition", "0.0851 / 0.8121", "0.1560 / 1.6591", "0.7686 / 7.2700", "0.3409 / 3.1738"] },
-  { cells: ["Response-coupled partition", "0.0736 / 0.6967", "0.1489 / 1.6479", "0.7617 / 7.2271", "0.3315 / 3.1502"] },
-  { cells: ["Semantic + probe repair", "0.0527 / 0.3562", "0.1041 / 0.8186", "0.2622 / 0.8260", "0.1720 / 0.8648"] },
-  { cells: ["SparsePR", "0.0330 / 0.2285", "0.0707 / 0.4305", "0.0954 / 0.5769", "0.0822 / 0.4951"], highlight: true },
+  { cells: ["Semantic partition", "0.089 / 0.714", "0.164 / 1.734", "0.791 / 7.532", "0.359 / 3.356"] },
+  { cells: ["Key-response K/V partition", "0.085 / 0.812", "0.156 / 1.659", "0.769 / 7.270", "0.341 / 3.174"] },
+  { cells: ["Response-coupled partition", "0.073 / 0.696", "0.108 / 0.647", "0.761 / 7.227", "0.331 / 3.150"] },
+  { cells: ["Semantic + probe repair", "0.053 / 0.356", "0.105 / 0.819", "0.262 / 0.826", "0.124 / 0.668"] },
+  { cells: ["SparsePR", "0.030 / 0.207", "0.063 / 0.323", "0.075 / 0.489", "0.076 / 0.447"], highlight: true },
 ];
 
 const querySupports = [
@@ -368,7 +368,7 @@ function HomePage() {
           <div className="support-legend"><span><i />Omitted key support</span><span><i className="active" />Retained key support</span><span><i className="union" />Pooled support</span></div>
           <aside className="method-callout"><strong>SparsePR</strong><p>groups queries with similar response patterns, increasing support overlap before constructing the shared route.</p></aside>
         </div>
-        <figure className="paper-figure structural-figure"><img src={assetUrl("/media/figures/structural-observations-final.png")} alt="Per-query sparsity versus pooled support density and normalized output error versus retained attention mass across four models" /><figcaption>Per-query concentration does not determine pooled support, and retained attention mass does not determine output error.</figcaption></figure>
+        <figure className="paper-figure structural-figure"><img src={assetUrl("/media/figures/structural-observations-final.png")} alt="Per-query sparsity versus pooled support density across four models and Cosmos3-Nano output error at matched retained attention mass" /><figcaption>Per-query concentration does not determine pooled support, and nearly identical retained attention mass can yield substantially different output errors.</figcaption></figure>
       </section>
 
       <section className="method-section">
@@ -403,7 +403,7 @@ function HomePage() {
           <ResultTable wide headers={["Model", "Method", "PSNR ↑", "SSIM ↑", "LPIPS ↓", "ImgQual ↑", "SubCons ↑", "PBench ↑", "Density ↓", "PFLOPs ↓", "E2E ↑"]} rows={qualityResults} />
         </article>
 
-        <figure className="paper-figure results-figure"><img src={assetUrl("/media/figures/results-final-pdf.png")} alt="Error reduction from response-coupled partitioning across four models and Wan2.2 full-generation latency breakdown" /><figcaption>Response-coupled partitioning reduces mean and p99 error at 22% density. On Wan2.2, SparsePR reaches 1.80× speedup and probe repair uses 1.1% of total latency.</figcaption></figure>
+        <figure className="paper-figure results-figure"><img src={assetUrl("/media/figures/results-final-pdf.png")} alt="Error reduction from response-coupled partitioning across four models and Wan2.2 full-generation latency breakdown" /><figcaption>Response-coupled partitioning reduces mean error by 38.7% to 71.4% and p99 error by 33.1% to 60.6% at 22% density. On Wan2.2, SparsePR reaches 1.80× speedup and probe repair uses 1.1% of total latency.</figcaption></figure>
 
         <article className="results-block">
           <div className="results-subhead"><p>Table 2</p><div><h3>Partitioning and reconstruction ablations</h3><span>Mean / p99 normalized attention output error at 22% total executed-pair density. Lower is better.</span></div></div>
@@ -459,7 +459,7 @@ function MethodPage() {
       </section>
       <section className="wide-section standalone-figure">
         <div className="section-intro"><h2>Why per-query sparsity is not executable sparsity.</h2><p>Queries that share one route must use the union of their K/V supports. SparsePR groups queries by response similarity to increase support overlap before routing.</p></div>
-        <figure className="paper-figure structural-figure"><img src={assetUrl("/media/figures/structural-observations-final.png")} alt="Per-query attention support density compared with pooled support density and retained attention mass compared with output error" /><figcaption>Per-query concentration does not determine pooled executable support, and retained attention mass does not determine output error.</figcaption></figure>
+        <figure className="paper-figure structural-figure"><img src={assetUrl("/media/figures/structural-observations-final.png")} alt="Per-query attention support density compared with pooled support density and Cosmos3-Nano output error at matched retained attention mass" /><figcaption>Per-query concentration does not determine pooled executable support, and nearly identical retained attention mass can yield substantially different output errors.</figcaption></figure>
       </section>
       <SiteFooter />
     </main>
@@ -476,7 +476,7 @@ function ResultsPage() {
           <div className="results-subhead"><p>Table 1</p><div><h2>Quality and efficiency</h2><span>Reference fidelity, task quality, executed-pair density, attention PFLOPs, and end-to-end speedup.</span></div></div>
           <ResultTable wide headers={["Model", "Method", "PSNR ↑", "SSIM ↑", "LPIPS ↓", "ImgQual ↑", "SubCons ↑", "PBench ↑", "Density ↓", "PFLOPs ↓", "E2E ↑"]} rows={qualityResults} />
         </article>
-        <figure className="paper-figure results-figure"><img src={assetUrl("/media/figures/results-final-pdf.png")} alt="Error reduction from response-coupled partitioning and full-generation latency breakdown" /><figcaption>At matched density, response-coupled partitioning reduces mean and p99 error. SparsePR reaches 1.80× end-to-end speedup on Wan2.2, with probe repair using 1.1% of total latency.</figcaption></figure>
+        <figure className="paper-figure results-figure"><img src={assetUrl("/media/figures/results-final-pdf.png")} alt="Error reduction from response-coupled partitioning and full-generation latency breakdown" /><figcaption>At matched density, response-coupled partitioning reduces mean error by 38.7% to 71.4% and p99 error by 33.1% to 60.6%. SparsePR reaches 1.80× end-to-end speedup on Wan2.2, with probe repair using 1.1% of total latency.</figcaption></figure>
         <article className="results-block">
           <div className="results-subhead"><p>Table 2</p><div><h2>Partitioning and reconstruction ablations</h2><span>Mean and p99 normalized attention output error at 22% total executed-pair density. Lower is better.</span></div></div>
           <ResultTable headers={["Configuration", "HunyuanVideo", "Wan2.2", "Cosmos-Predict2.5", "Cosmos3-Nano"]} rows={partitionResults} />
