@@ -14,11 +14,10 @@ export type GalleryClip = {
   score: string;
 };
 
-const galleryData: { model: string; task: string; selection: string; clips: GalleryClip[] }[] = [
+const galleryData: { model: string; task: string; clips: GalleryClip[] }[] = [
   {
     model: "HunyuanVideo-13B",
     task: "Text-to-video · 720p",
-    selection: "12 quality-selected VBench samples",
     clips: [
       { src: "/media/gallery/hunyuan/0025_hunyuan_t2v_025_3bc182d35d.mp4", benchmark: "VBench", score: "33.99 dB", prompt: "Deep in the dense forest, a lighthouse stands alone, its light at the top flickering on and off. The entire video presents a suspenseful atmosphere." },
       { src: "/media/gallery/hunyuan/0000_hunyuan_t2v_000_2a822491e2.mp4", benchmark: "VBench", score: "33.70 dB", prompt: "Two dolphins are swimming in the blue sea." },
@@ -37,7 +36,6 @@ const galleryData: { model: string; task: string; selection: string; clips: Gall
   {
     model: "Wan2.2-I2V-A14B",
     task: "Image-to-video · native aspect ratio",
-    selection: "10 selected VBench samples",
     clips: [
       { src: "/media/gallery/wan22/0000_wan22_i2v_000_a_blue_and_white_smoke_is_swirly_in_the_dark.mp4", benchmark: "VBench", score: "28.73 dB", prompt: "A blue and white smoke is swirly in the dark." },
       { src: "/media/gallery/wan22/0001_wan22_i2v_001_an_aerial_view_of_a_small_town_on_the_edge_of_the_ocean.mp4", benchmark: "VBench", score: "27.28 dB", prompt: "An aerial view of a small town on the edge of the ocean." },
@@ -54,7 +52,6 @@ const galleryData: { model: string; task: string; selection: string; clips: Gall
   {
     model: "Cosmos-Predict2.5-14B",
     task: "Image-to-world · native 720p class",
-    selection: "6 VBench + 4 PBench",
     clips: [
       { src: "/media/gallery/cosmos25/0000_a_view_of_a_star_trail_in_the_night_sky.mp4", benchmark: "VBench", score: "40.33 dB", prompt: "A view of a star trail in the night sky." },
       { src: "/media/gallery/cosmos25/0012_an_aerial_view_of_a_rocky_beach_in_indonesia.mp4", benchmark: "VBench", score: "26.19 dB", prompt: "An aerial view of a rocky beach in Indonesia." },
@@ -71,7 +68,6 @@ const galleryData: { model: string; task: string; selection: string; clips: Gall
   {
     model: "Cosmos3-Nano-16B",
     task: "Image-to-world · 720p",
-    selection: "6 VBench + 1 PBench sample",
     clips: [
       { src: "/media/gallery/cosmos3/0117_a_highland_cow_with_long_horns_standing_in_a_field.mp4", benchmark: "VBench", score: "26.07 dB", prompt: "A highland cow with long horns standing in a field." },
       { src: "/media/gallery/cosmos3/0138_a_giraffe_walking_in_a_field.mp4", benchmark: "VBench", score: "22.92 dB", prompt: "A giraffe walking in a field." },
@@ -216,7 +212,6 @@ function ModelGallery({ gallery }: { gallery: (typeof galleries)[number] }) {
     <section className="model-gallery" aria-label={`${gallery.model} qualitative video gallery`}>
       <div className="gallery-heading">
         <div><h3>{gallery.model}</h3><p>{gallery.task}</p></div>
-        <span>{gallery.selection} · metric-selected</span>
       </div>
       <div className="gallery-stage">
         <button className="gallery-arrow previous" onClick={() => move(-1)} aria-label={`Previous ${gallery.model} videos`}>←</button>
