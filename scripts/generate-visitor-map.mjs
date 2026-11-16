@@ -32,7 +32,7 @@ const dots = visitedCountries
     const coordinates = country ? geoCentroid(country) : fallbackCoordinates[iso];
     const point = coordinates ? projection(coordinates) : null;
     return point
-      ? `<circle cx="${point[0].toFixed(2)}" cy="${point[1].toFixed(2)}" r="7"/>`
+      ? `<circle cx="${point[0].toFixed(2)}" cy="${point[1].toFixed(2)}" r="5"/>`
       : "";
   })
   .join("");
