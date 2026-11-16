@@ -192,6 +192,8 @@ tbody tr:hover { background: #f8faff; }
 .bibtex { position: relative; min-height: 340px; overflow: hidden; border: 1px solid rgba(255,255,255,.3); border-radius: 14px; background: rgba(7, 20, 58, .3); }
 .bibtex button { position: absolute; right: 18px; top: 18px; padding: 11px 15px; border: 1px solid rgba(255,255,255,.3); border-radius: 7px; color: white; background: rgba(255,255,255,.1); cursor: pointer; font-size: 14px; }
 .bibtex pre { margin: 0; padding: 50px 44px; overflow-x: auto; color: #fff; font-size: 15px; line-height: 1.75; }
+.visitor-map-section { padding: 28px 20px 10px; display: flex; justify-content: center; background: var(--paper); }
+.visitor-map-section img { width: min(360px, 72vw); height: auto; display: block; }
 .footer { min-height: 160px; padding-top: 42px; display: flex; justify-content: space-between; gap: 30px; border-top: 1px solid var(--line); }
 .footer > div { display: flex; flex-direction: column; gap: 5px; }
 .footer span, .footer p { color: var(--muted); font-size: 11px; }
@@ -257,6 +259,8 @@ tbody tr:hover { background: #f8faff; }
   .bibtex { min-height: 0; }
   .bibtex button { right: 14px; top: 14px; font-size: 12px; }
   .bibtex pre { padding: 70px 20px 28px; font-size: 12px; line-height: 1.65; }
+  .visitor-map-section { padding-top: 22px; }
+  .visitor-map-section img { width: min(280px, 78vw); }
   .footer { flex-direction: column; }
   .footer p { text-align: left; }
   .model-metrics { grid-template-columns: 1fr 1fr; margin-bottom: 48px; }

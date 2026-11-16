@@ -414,6 +414,10 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="visitor-map-section" aria-label="Countries that have visited the SparsePR website">
+        <img src={assetUrl("/media/figures/visitor-map.svg")} alt="World map with black dots marking countries with SparsePR website visitors" />
+      </section>
+
       <SiteFooter />
     </main>
   );
