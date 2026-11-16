@@ -37,7 +37,7 @@ const dots = visitedCountries
   })
   .join("");
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-labelledby="title description">
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 398" role="img" aria-labelledby="title description">
   <title id="title">Countries that have visited the SparsePR website</title>
   <desc id="description">A world map with black dots marking 26 countries with website visitors.</desc>
   <g fill="#e5e7eb" stroke="#ffffff" stroke-width="1.1" vector-effect="non-scaling-stroke">${countryPaths}</g>
