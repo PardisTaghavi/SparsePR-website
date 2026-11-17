@@ -6,7 +6,8 @@ import world from "@d3-maps/atlas/world/countries/countries-110m";
 const visitedCountries = [
   "USA", "CHN", "SGP", "HKG", "KOR", "JPN", "NLD", "CAN", "DEU",
   "IND", "BRA", "IRL", "ISR", "MEX", "RUS", "SRB", "AUS", "COL",
-  "FRA", "ITA", "NZL", "POL", "TWN", "TUR", "GBR", "UZB",
+  "FRA", "ITA", "NZL", "POL", "TWN", "TUR", "GBR", "UZB", "BLR",
+  "ISL",
 ];
 
 const fallbackCoordinates = {
@@ -39,7 +40,7 @@ const dots = visitedCountries
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 398" role="img" aria-labelledby="title description">
   <title id="title">Countries that have visited the SparsePR website</title>
-  <desc id="description">A world map with black dots marking 26 countries with website visitors.</desc>
+  <desc id="description">A world map with black dots marking ${visitedCountries.length} countries with website visitors.</desc>
   <g fill="#e5e7eb" stroke="#ffffff" stroke-width="1.1" vector-effect="non-scaling-stroke">${countryPaths}</g>
   <g fill="#111111" stroke="#ffffff" stroke-width="1.8" vector-effect="non-scaling-stroke">${dots}</g>
 </svg>
